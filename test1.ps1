@@ -10,11 +10,12 @@ function Install-Software([string]$url, [string]$installerPath, [string]$argumen
 
 # Create the form
 $form = New-Object System.Windows.Forms.Form
-$form.Text = ''  # Set to empty string to remove the title
+$form.Text = ''
 $form.Size = New-Object System.Drawing.Size(320, 200)
 $form.StartPosition = 'CenterScreen'
 $form.BackColor = [System.Drawing.Color]::FromArgb(45, 45, 48)
 $form.ForeColor = [System.Drawing.Color]::WhiteSmoke
+$form.FormBorderStyle = 'None'  # This removes the title bar and window border
 
 # Checkbox for Google Chrome
 $chromeCheckbox = New-Object System.Windows.Forms.CheckBox
