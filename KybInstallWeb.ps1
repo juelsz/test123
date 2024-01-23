@@ -81,8 +81,13 @@ $lpd = "C:\temp\lpd"
 # Specify the destination path for the folder
 $lpddest = "$final_destination\lpd"
 
-# Move the folder to the destination
-Move-Item -Path $lpd -Destination $lpddest -Force
+if (Test-Path $lpddest) {
+    # Skip moving if the folder already exists
+    Write-Output "Folder already exists at destination: $lpddest. Skipping move."
+}
+else {
+    Move-Item -Path $lpd -Destination $lpddest -Force
+}
 
 if (Test-Path "$temp_destination\Xming-6-9-0-31-setup.exe") {
     Move-Item -Path "$temp_destination\Xming-6-9-0-31-setup.exe" -Destination "$xming\Xming-6-9-0-31-setup.exe" -Force
